@@ -65,6 +65,8 @@ public class Worker : BackgroundService
         {
             var st = new MySystemTime();
             var onlineTime = GetNistTime();
+            onlineTime = onlineTime.AddHours(-2);
+            
             st.wYear = Convert.ToInt16(onlineTime.Year);
             st.wMonth = Convert.ToInt16(onlineTime.Month);
             st.wDay = Convert.ToInt16(onlineTime.Day);
