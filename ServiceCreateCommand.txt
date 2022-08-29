@@ -1,0 +1,1 @@
+sc.exe create sgst.TimeFixer binpath="C:\TimeFix\TimeFixWorkerService.exe" start="demand" displayname="Time Fixer Service"
