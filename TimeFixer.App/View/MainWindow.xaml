@@ -5,15 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeFixer.App"
         mc:Ignorable="d"
-        WindowStyle="SingleBorderWindow"
-        Title="TimeFixer" Height="150" Width="400"
+        WindowStyle="ThreeDBorderWindow"
+        Title="TimeFixer" Height="300" Width="500"
         >
     <Grid>
-        <TextBlock x:Name="Display"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   TextAlignment="Center"
+                   FontSize="20"
+                   Text="Got date and time:"/>
+        
+        <TextBlock Grid.Row="1"
+                   x:Name="GotTimeDisplay"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    TextAlignment="Center"
                    FontSize="40"
-                   Text="XX:XX:XX"/>
+                   Text="DD.MMM.YYYY HH:MM:SS"/>
+        
+        <TextBlock Grid.Row="2"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   TextAlignment="Center"
+                   FontSize="20"
+                   Text="Hour modifier:"/>
+        
+        <TextBox Grid.Row="3"
+                 Width="150"
+                 x:Name="TimeModifier"
+                 Text="0"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 FontSize="40"
+                 TextAlignment="Center"/>
+        
+        <TextBlock Grid.Row="4"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   TextAlignment="Center"
+                   FontSize="20"
+                   Text="Set date and time:"/>
+        
+        <TextBlock x:Name="ResultTimeDisplay"
+                   Grid.Row="5"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Center"
+                   FontSize="40"
+                   Text="DD.MMM.YYYY HH:MM:SS"
+                   Padding="0 0 0 10"/>
     </Grid>
 </Window>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TimeFixer.App.ViewModel.Helpers;
 
-public class NistTimeGetter
+public static class NistTimeGetter
 {
     [Obsolete("Obsolete")]
     public static async Task<DateTime> GetNistTime()

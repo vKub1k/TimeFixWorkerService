@@ -33,36 +33,48 @@ namespace TimeFixer.App.View
 
             base.OnClosing(e);
         }
-        
+
         private DispatcherTimer _timer;
-        
+
         [Obsolete("Obsolete")]
         public MainWindow()
         {
             InitializeComponent();
+            //Timer_Tick(null, null);
 
             _timer = new DispatcherTimer
             {
-                Interval = new TimeSpan(0, 0, 30)
+                Interval = new TimeSpan(0, 0, 3)
             };
+
             _timer.Tick += Timer_Tick;
             _timer.Start();
         }
 
         [Obsolete("Obsolete")]
-        private async void Timer_Tick(object? sender, EventArgs e)
+        private async void Timer_Tick(object? sender, EventArgs? e)
         {
             var onlineTime = await NistTimeGetter.GetNistTime();
-            onlineTime = onlineTime.AddHours(-2);
+            GotTimeDisplay.Text = onlineTime.ToString(CultureInfo.InvariantCulture);
+
+            int timeModifier = 0;
             
-            
-            var systemTimeToSet = DateTimeToMySystemTimeConverter.ConvertToMySystemTime(onlineTime);
+            try
+            {
+                timeModifier = TimeModifier.Text != "" ? Convert.ToInt32(TimeModifier.Text) : 0;
+            }
+            catch
+            {
+                timeModifier = 0;
+            }
+
+            var localTime = onlineTime.AddHours(timeModifier);
+
+            var systemTimeToSet = DateTimeToMySystemTimeConverter.ConvertToMySystemTime(localTime);
 
             SystemTimeSetter.SetSystemTime(ref systemTimeToSet);
 
-            Display.Text = onlineTime.ToString(CultureInfo.InvariantCulture);
+            ResultTimeDisplay.Text = localTime.ToString("dd/MMM/yyyy HH:mm:ss");
         }
     }
-    
-    
 }
