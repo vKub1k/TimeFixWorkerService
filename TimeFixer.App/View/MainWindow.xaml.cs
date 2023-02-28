@@ -44,7 +44,7 @@ namespace TimeFixer.App.View
 
             _timer = new DispatcherTimer
             {
-                Interval = new TimeSpan(0, 0, 3)
+                Interval = new TimeSpan(0, 0, 30)
             };
 
             _timer.Tick += Timer_Tick;
